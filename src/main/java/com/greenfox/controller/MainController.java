@@ -4,15 +4,10 @@ import com.greenfox.model.ErrorMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.logging.Logger;
 
 @Controller
 public class MainController {
-
-  private final static Logger LOGGER = Logger.getLogger(MainController.class.getName());
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ErrorMessage someException(MissingServletRequestParameterException e) {
@@ -22,14 +17,10 @@ public class MainController {
 
   @RequestMapping("/")
   public String index() {
+    System.out.println("Logging");
     return "index";
   }
 
-  @GetMapping("/")
-  public String logging(){
-    System.out.println(LOGGER.getName());
-    return "index";
-  }
 }
 
 
