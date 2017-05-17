@@ -20,7 +20,7 @@ public class RegisterController {
 
   @RequestMapping("/add")
   public String register(@RequestParam("name") String name) {
-    User newUser = new User();
+    User newUser = new User(name);
     chatRepo.save(newUser);
     return "redirect:/register";
   }
