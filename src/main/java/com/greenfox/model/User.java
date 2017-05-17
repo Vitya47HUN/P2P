@@ -9,19 +9,20 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
+  String name;
 
-  public User(){
+  public User() {
   }
 
-  public User(long id){
-    this.id = id;
+  public User(String newUser){
+    this.name = newUser;
   }
 
-  public long getId() {
-    return id;
+  public String getName() {
+    return name;
   }
 
-  public void setId(long id) {
-    this.id = id;
+  public void setName(String name) {
+    this.name = name;
   }
 }
