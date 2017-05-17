@@ -17,7 +17,7 @@ public class MainController {
 
   @RequestMapping("/")
   public String index() {
-    System.out.println("This is a log message");
+    System.out.println("CHAT_APP_LOGLEVEL");
     return "index";
   }
 
