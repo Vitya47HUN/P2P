@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.logging.Logger;
+
 @Controller
 public class MainController {
+
+  private final static Logger LOGGER = Logger.getLogger(MainController.class.getName());
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ErrorMessage someException(MissingServletRequestParameterException e) {
@@ -23,6 +27,7 @@ public class MainController {
 
   @GetMapping("/")
   public String logging(){
+    System.out.println(LOGGER.getName());
     return "index";
   }
 }
