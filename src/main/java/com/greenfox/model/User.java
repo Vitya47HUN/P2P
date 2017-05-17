@@ -3,7 +3,7 @@ package com.greenfox.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "UserLogin")
 public class User {
 
   @Id
