@@ -34,7 +34,7 @@ public class MainController {
 
   @RequestMapping("/update")
   public String update(@RequestParam("name") String name, Model model) {
-      chatRepo.findOne((long)(1)).setName(name);
+      chatRepo.findOne((long)1).setName(name);
       return "index";
     }
   }
