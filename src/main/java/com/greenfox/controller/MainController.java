@@ -1,6 +1,7 @@
 package com.greenfox.controller;
 
 import com.greenfox.model.ErrorMessage;
+import com.greenfox.model.User;
 import com.greenfox.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,14 +29,18 @@ public class MainController {
       return "redirect:/enter";
     } else {
       System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
+      System.out.println(chatRepo.findOne((long)1).getName());
       return "index";
     }
   }
 
   @RequestMapping("/update")
   public String update(@RequestParam("name") String name, Model model) {
-      chatRepo.findOne((long)1).setName(name);
-      return "index";
+    User user = chatRepo.findOne((long)1);
+    user.setName(name);
+    chatRepo.save(user);
+    System.out.println(name);
+      return "redirect:";
     }
   }
 
