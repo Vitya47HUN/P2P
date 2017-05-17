@@ -18,11 +18,11 @@ public class RegisterController {
     return "register";
   }
 
-  @RequestMapping("/register/add")
+  @RequestMapping("/add")
   public String register(@RequestParam("name") String name) {
     User newUser = new User();
     chatRepo.save(newUser);
-    return "redirect:";
+    return "redirect:/register";
   }
 
 
