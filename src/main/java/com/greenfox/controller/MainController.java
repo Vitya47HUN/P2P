@@ -28,8 +28,8 @@ public class MainController {
     if (chatRepo.count() == 0) {
       return "redirect:/enter";
     } else {
-      System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
-      System.out.println(chatRepo.findOne((long)1).getName());
+//      System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
+//      System.out.println(chatRepo.findOne((long)1).getName());
       return "index";
     }
   }
@@ -39,8 +39,8 @@ public class MainController {
     User user = chatRepo.findOne((long)1);
     user.setName(name);
     chatRepo.save(user);
-    System.out.println(name);
-      return "redirect:";
+//    System.out.println(name);
+      return "redirect:/";
     }
   }
 
