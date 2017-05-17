@@ -22,7 +22,7 @@ public class RegisterController {
   public String register(@RequestParam("name") String name) {
     User newUser = new User();
     chatRepo.save(newUser);
-    return "redirect:/register";
+    return "redirect:";
   }
 
 
