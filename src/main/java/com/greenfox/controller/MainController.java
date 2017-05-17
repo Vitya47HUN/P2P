@@ -17,7 +17,7 @@ public class MainController {
 
   @RequestMapping("/")
   public String index() {
-    System.getenv("CHAT_APP_LOGLEVEL");
+    System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
     return "index";
   }
 
