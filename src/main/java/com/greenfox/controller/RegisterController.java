@@ -17,8 +17,12 @@ public class RegisterController {
 
   @RequestMapping("/enter")
   public String enter(Model model) {
-    model.addAttribute("error",error);
-    return "enter";
+    if (chatRepo.count() > 0){
+      return "redirect:/";
+    }else{
+      model.addAttribute("error", error);
+      return "enter";
+    }
   }
 
   @RequestMapping("/enter/add")
