@@ -17,7 +17,7 @@ public class MainController {
 
   @RequestMapping("/")
   public String index() {
-    System.out.println("Logging");
+    System.out.println("This is a log message");
     return "index";
   }
 
