@@ -16,6 +16,7 @@ public class MainController {
 
   @Autowired
   ChatRepository chatRepo;
+  String error = "";
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ErrorMessage someException(MissingServletRequestParameterException e) {
@@ -36,12 +37,18 @@ public class MainController {
 
   @RequestMapping("/update")
   public String update(@RequestParam("name") String name, Model model) {
-    User user = chatRepo.findOne((long)1);
-    user.setName(name);
-    chatRepo.save(user);
+    if (name.isEmpty()) {
+      error = "The username field is empty.";
+      model.addAttribute("error", error);
+      return "redirect:/";
+    } else {
+      User user = chatRepo.findOne((long) 1);
+      user.setName(name);
+      chatRepo.save(user);
 //    System.out.println(name);
       return "redirect:/";
     }
+  }
   }
 
 
