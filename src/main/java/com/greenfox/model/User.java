@@ -6,16 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class ChatMessage {
+public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
 
-  public ChatMessage(){
+  public User(){
   }
 
-  public ChatMessage(long id){
+  public User(long id){
     this.id = id;
   }
 

@@ -1,10 +1,10 @@
 package com.greenfox.repository;
 
 
-import com.greenfox.model.ChatMessage;
+import com.greenfox.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface ChatRepository extends CrudRepository<ChatMessage,Long> {
+public interface ChatRepository extends CrudRepository<User,Long> {
 }
