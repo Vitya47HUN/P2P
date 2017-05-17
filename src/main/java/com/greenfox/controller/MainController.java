@@ -4,9 +4,11 @@ import com.greenfox.model.ErrorMessage;
 import com.greenfox.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -29,7 +31,14 @@ public class MainController {
       return "index";
     }
   }
-}
+
+  @RequestMapping("/update")
+  public String update(@RequestParam("name") String name, Model model) {
+      chatRepo.findOne((long)(1)).setName(name);
+      return "index";
+    }
+  }
+
 
 
 
