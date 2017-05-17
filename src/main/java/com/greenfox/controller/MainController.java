@@ -16,7 +16,7 @@ public class MainController {
 
   @Autowired
   ChatRepository chatRepo;
-  String error = "";
+  String error;
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ErrorMessage someException(MissingServletRequestParameterException e) {
@@ -25,10 +25,11 @@ public class MainController {
   }
 
   @RequestMapping("/")
-  public String index() {
+  public String index(Model model) {
     if (chatRepo.count() == 0) {
       return "redirect:/enter";
     } else {
+      model.addAttribute("error", error);
 //      System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
 //      System.out.println(chatRepo.findOne((long)1).getName());
       return "index";
@@ -36,13 +37,13 @@ public class MainController {
   }
 
   @RequestMapping("/update")
-  public String update(@RequestParam("name") String name, Model model) {
-    if (name.isEmpty()) {
+  public String update(Model model,@RequestParam("name") String name) {
+    if (name.isEmpty()){
       error = "The username field is empty.";
-      model.addAttribute("error", error);
       return "redirect:/";
     } else {
-      User user = chatRepo.findOne((long) 1);
+      error = "";
+      User user = chatRepo.findOne((long)1);
       user.setName(name);
       chatRepo.save(user);
 //    System.out.println(name);

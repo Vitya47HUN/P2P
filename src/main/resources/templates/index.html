@@ -5,16 +5,17 @@
     <title>P2P chat program</title>
 </head>
 <body>
-<p th:text="${error}">check</p>
 <h1>Peer to Peer Chat Program</h1>
+<p th:text="${error}"></p>
 <form method="get" action="/update">
     <tr>
         <th>Your username</th>
     </tr>
     <tr>
-        <td><input type="list" name="name"/></td>
-        <td><input type="submit" value="Enter"/></td>
+        <td><input th:type="text" name="name"/></td>
+        <td><input th:type="submit" value="Update"/></td>
     </tr>
+
 </form>
 </body>
 </html>

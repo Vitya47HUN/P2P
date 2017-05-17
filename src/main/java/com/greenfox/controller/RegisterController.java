@@ -13,7 +13,7 @@ public class RegisterController {
 
   @Autowired
   ChatRepository chatRepo;
-  String error = "";
+  String error;
 
   @RequestMapping("/enter")
   public String enter(Model model) {
