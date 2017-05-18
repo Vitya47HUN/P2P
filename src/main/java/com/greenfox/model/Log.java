@@ -14,7 +14,6 @@ public class Log {
   }
 
   public void printLog(String endpoint,String mapping,String input){
-    Log log = new Log();
     System.out.println(dateFormat.format(date) + " " + env + " " + endpoint + " " + mapping + " " + input);
   }
 
