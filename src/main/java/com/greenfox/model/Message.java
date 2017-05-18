@@ -20,7 +20,7 @@ public class Message {
   public Message(String name){
     Username = name;
     Random r = new Random();
-    id = 10000 + (long)(r.nextDouble()*(99999-10000));
+    id = 1000000+ (long)(r.nextDouble()*(9999999-1000000));
   }
 
   public String getUsername() {

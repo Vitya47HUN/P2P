@@ -39,7 +39,6 @@ public class MainController {
     } else {
       model.addAttribute("messRepo", messRepo.count());
       model.addAttribute("messRepoList",messRepo.findAll());
-      
       model.addAttribute("error", error);
       model.addAttribute("userName", chatRepo.findOne((long) 1).getName());
       Log log = new Log();
