@@ -22,7 +22,7 @@ public class MainController {
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ErrorMessage someException(MissingServletRequestParameterException e) {
     System.err.print(e.getMessage());
-    return new ErrorMessage("Error message");
+    return new ErrorMessage("ERROR");
   }
 
   @RequestMapping("/")
