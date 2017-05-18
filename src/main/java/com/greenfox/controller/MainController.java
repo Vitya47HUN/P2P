@@ -1,6 +1,7 @@
 package com.greenfox.controller;
 
 import com.greenfox.model.ErrorMessage;
+import com.greenfox.model.Log;
 import com.greenfox.model.User;
 import com.greenfox.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,14 @@ public class MainController {
   @RequestMapping("/")
   public String index(Model model) {
     if (chatRepo.count() == 0) {
+      Log log = new Log();
+      log.printLog("/","GET","");
       return "redirect:/enter";
     } else {
       model.addAttribute("error", error);
       model.addAttribute("userName", chatRepo.findOne((long)1).getName());
-//      System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
-//      System.out.println(chatRepo.findOne((long)1).getName());
+      Log log = new Log();
+      log.printLog("/","GET","");
       return "index";
     }
   }
@@ -41,8 +44,12 @@ public class MainController {
   public String update(Model model,@RequestParam("name") String name) {
     if (name.isEmpty()){
       error = "The username field is empty.";
+      Log log = new Log();
+      log.printLog("/update","PUT","name=" + name);
       return "redirect:/";
     } else {
+      Log log = new Log();
+      log.printLog("/update","PUT","name=" + name);
       error = "";
       User user = chatRepo.findOne((long)1);
       user.setName(name);
