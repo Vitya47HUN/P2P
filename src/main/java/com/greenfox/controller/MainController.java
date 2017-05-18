@@ -4,6 +4,7 @@ import com.greenfox.model.ErrorMessage;
 import com.greenfox.model.Log;
 import com.greenfox.model.User;
 import com.greenfox.repository.ChatRepository;
+import com.greenfox.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ public class MainController {
 
   @Autowired
   ChatRepository chatRepo;
+  MessageRepository messRepo;
   String error;
 
   @ExceptionHandler(MissingServletRequestParameterException.class)

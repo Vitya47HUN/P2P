@@ -1,18 +1,20 @@
 package com.greenfox.model;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @Entity
 @Table(name = "Messages")
 public class Message {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
   User Username;
   String Text;
 
   public Message(){
+    Random r = new Random();
+    id = 10000 + (long)(r.nextDouble()*(99999-10000));
   }
 
   public User getUsername() {
