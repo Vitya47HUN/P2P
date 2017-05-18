@@ -9,19 +9,20 @@ public class Message {
 
   @Id
   long id;
-  User Username;
+  String Username;
   String Text;
 
-  public Message(){
+  public Message(String name){
+    Username = name;
     Random r = new Random();
     id = 10000 + (long)(r.nextDouble()*(99999-10000));
   }
 
-  public User getUsername() {
+  public String getUsername() {
     return Username;
   }
 
-  public void setUsername(User username) {
+  public void setUsername(String username) {
     Username = username;
   }
 

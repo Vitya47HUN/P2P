@@ -2,6 +2,7 @@ package com.greenfox.controller;
 
 import com.greenfox.model.ErrorMessage;
 import com.greenfox.model.Log;
+import com.greenfox.model.Message;
 import com.greenfox.model.User;
 import com.greenfox.repository.ChatRepository;
 import com.greenfox.repository.MessageRepository;
@@ -18,6 +19,8 @@ public class MainController {
 
   @Autowired
   ChatRepository chatRepo;
+
+  @Autowired
   MessageRepository messRepo;
   String error;
 
@@ -31,36 +34,44 @@ public class MainController {
   public String index(Model model) {
     if (chatRepo.count() == 0) {
       Log log = new Log();
-      log.printLog("/","GET","");
+      log.printLog("/", "GET", "");
       return "redirect:/enter";
     } else {
+      model.addAttribute("messRepo", messRepo.findAll());
       model.addAttribute("error", error);
-      model.addAttribute("userName", chatRepo.findOne((long)1).getName());
+      model.addAttribute("userName", chatRepo.findOne((long) 1).getName());
       Log log = new Log();
-      log.printLog("/","GET","");
+      log.printLog("/", "GET", "");
       return "index";
     }
   }
 
   @RequestMapping("/update")
-  public String update(Model model,@RequestParam("name") String name) {
-    if (name.isEmpty()){
+  public String update(Model model, @RequestParam("name") String name) {
+    if (name.isEmpty()) {
       error = "The username field is empty.";
       Log log = new Log();
-      log.printLog("/update","PUT","name=" + name);
+      log.printLog("/update", "PUT", "name=" + name);
       return "redirect:/";
     } else {
       Log log = new Log();
-      log.printLog("/update","PUT","name=" + name);
+      log.printLog("/update", "PUT", "name=" + name);
       error = "";
-      User user = chatRepo.findOne((long)1);
+      User user = chatRepo.findOne((long) 1);
       user.setName(name);
       chatRepo.save(user);
-//    System.out.println(name);
       return "redirect:/";
     }
   }
+
+  @RequestMapping("/message")
+  public String sendMessage(Model model, @RequestParam("message") String message) {
+    Message newMessage = new Message(chatRepo.findOne((long)1).getName());
+    messRepo.save(newMessage);
+    return "redirect:/";
   }
+
+}
 
 
 

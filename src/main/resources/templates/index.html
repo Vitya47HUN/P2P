@@ -15,7 +15,28 @@
         <td><input th:type="text" name="name" th:placeholder="${userName}"/></td>
         <td><input th:type="submit" value="Update"/></td>
     </tr>
-
+    <h3>Chat panel</h3>
+    <form action="/message">
+        <tr>
+            <th>Message</th>
+        </tr>
+        <tr>
+            <td><input type="list" name="message"/></td>
+            <td><input type="submit" value="Send"/></td>
+        </tr>
+    </form>
+    <h3>Messages</h3>
+    <!--<span th:if="${messRepo.count() == 0}">No messages yet.</span>-->
+    <!--<span th:if="${messRepo.count() > 0}">-->
+    <!--<ul>-->
+        <!--<li th:each="message : ${messRepo}" th:text="${message}"> </li>-->
+    <!--</ul>-->
+        <tr th:each="messages : ${message}">
+        <td th:text="${messages.id}">1</td>
+        <td th:text="${messages.text}">Text ...</td>
+    </tr>
+<!--</span>-->
+<!--</form>-->
 </form>
 </body>
 </html>
