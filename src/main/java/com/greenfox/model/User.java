@@ -8,8 +8,14 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  long id;
-  String name;
+  private long id;
+  private String name;
+
+  public User(long id, String name){
+    this.id = id;
+    this.name = name;
+  }
+
 
   public User() {
   }

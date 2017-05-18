@@ -72,7 +72,6 @@ public class MainController {
     messRepo.save(newMessage);
     return "redirect:/";
   }
-
 }
 
 

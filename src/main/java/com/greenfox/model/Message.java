@@ -10,6 +10,7 @@ import java.util.Random;
 @Table(name = "Messages")
 public class Message {
 
+
   @Id
   long id;
   String Username;
@@ -18,6 +19,20 @@ public class Message {
 
   public Message(){
     this.timestamp = new Timestamp(System.currentTimeMillis() / 1000);
+  }
+
+  public Message(long id, String username, String text, Timestamp timestamp) {
+    this.id = id;
+    Username = username;
+    Text = text;
+    this.timestamp = timestamp;
+  }
+
+  public Message(String username, String text) {
+    //this(something) calls the other constructor with the same parameter
+    // method overloading, constructor chain
+    this(username);
+    Text = text;
   }
 
   public Message(String name){
@@ -49,5 +64,13 @@ public class Message {
 
   public void setText(String text) {
     Text = text;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
   }
 }

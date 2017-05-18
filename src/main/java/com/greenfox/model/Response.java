@@ -1,10 +1,13 @@
 package com.greenfox.model;
 
-public class Service {
-  String status;
-  String message;
+public class Response {
 
-  public Service() {
+  private String status;
+  private String message;
+
+  public Response(String status, String message) {
+    this.status = status;
+    this.message = message;
   }
 
   public String getStatus() {

@@ -2,11 +2,12 @@ package com.greenfox.model;
 
 
 public class Reciever {
-Message message;
-User user;
 
-public Reciever(){
-}
+  private Message message;
+  private User user;
+
+  public Reciever() {
+  }
 
   public Message getMessage() {
     return message;
