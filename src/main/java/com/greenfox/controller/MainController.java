@@ -30,6 +30,7 @@ public class MainController {
       return "redirect:/enter";
     } else {
       model.addAttribute("error", error);
+      model.addAttribute("userName", chatRepo.findOne((long)1).getName());
 //      System.out.println(System.getenv("CHAT_APP_LOGLEVEL"));
 //      System.out.println(chatRepo.findOne((long)1).getName());
       return "index";
