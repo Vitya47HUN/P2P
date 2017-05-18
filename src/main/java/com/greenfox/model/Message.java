@@ -1,6 +1,8 @@
 package com.greenfox.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Random;
 
 @Entity
@@ -11,6 +13,9 @@ public class Message {
   long id;
   String Username;
   String Text;
+
+  public Message(){
+  }
 
   public Message(String name){
     Username = name;

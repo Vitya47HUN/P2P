@@ -37,7 +37,9 @@ public class MainController {
       log.printLog("/", "GET", "");
       return "redirect:/enter";
     } else {
-      model.addAttribute("messRepo", messRepo.findAll());
+      model.addAttribute("messRepo", messRepo.count());
+      model.addAttribute("messRepoList",messRepo.findAll());
+      
       model.addAttribute("error", error);
       model.addAttribute("userName", chatRepo.findOne((long) 1).getName());
       Log log = new Log();
@@ -67,6 +69,7 @@ public class MainController {
   @RequestMapping("/message")
   public String sendMessage(Model model, @RequestParam("message") String message) {
     Message newMessage = new Message(chatRepo.findOne((long)1).getName());
+    newMessage.setText(message);
     messRepo.save(newMessage);
     return "redirect:/";
   }
