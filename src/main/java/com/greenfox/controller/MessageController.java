@@ -1,7 +1,6 @@
 package com.greenfox.controller;
 
 import com.greenfox.model.ErrorMessage;
-import com.greenfox.model.Message;
 import com.greenfox.model.Reciever;
 import com.greenfox.model.Response;
 import com.greenfox.repository.MessageRepository;
@@ -33,7 +32,8 @@ public class MessageController {
     } else {
       myResponse = new Response("OK", null);
       messRepo.save(newReciever.getMessage());
-      restTemplate.postForObject(receiveLink, newReciever.getMessage(),Response.class);
+
+//      restTemplate.postForObject(receiveLink, newReciever.getMessage(),Response.class);
     }
     return myResponse;
   }
