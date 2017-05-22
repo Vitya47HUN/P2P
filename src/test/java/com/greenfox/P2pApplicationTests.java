@@ -48,7 +48,7 @@ public class P2pApplicationTests {
 
 //  private String getContent() throws JsonProcessingException {
 //    Reciever reciever = new Reciever();
-//    reciever.setClient();
+//    reciever.setId();
 //    reciever.setMessage(getMessage());
 //    return mapper.writeValueAsString(reciever);
 //  }

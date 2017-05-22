@@ -2,17 +2,17 @@ package com.greenfox.model;
 
 public class Client {
 
-  String client;
+  String id;
 
   public Client() {
-    this.client = System.getenv("CHAT_APP_UNIQUE_ID");
+    this.id = System.getenv("CHAT_APP_UNIQUE_ID");
   }
 
-  public String getClient() {
-    return client;
+  public String getId() {
+    return id;
   }
 
-  public void setClient(String client) {
-    this.client = client;
+  public void setId(String id) {
+    this.id = id;
   }
 }

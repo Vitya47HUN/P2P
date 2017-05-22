@@ -31,7 +31,7 @@ public class MessageController {
       myResponse.setMessage("Missing field(s): message.username");
       myResponse.setStatus("Error");
       return myResponse;
-    } else if (!newReciever.getClient().getClient().equals(myClient)){
+    } else if (!newReciever.getClient().getId().equals(myClient)){
       myResponse = new Response("OK", null);
       messRepo.save(newReciever.getMessage());
       restTemplate.postForObject(receiveLink, newReciever,Response.class);

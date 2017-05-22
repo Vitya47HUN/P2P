@@ -1,5 +1,7 @@
 package com.greenfox.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,7 +15,10 @@ public class Message {
 
   @Id
   long id;
+
+  @JsonProperty(value = "username")
   String Username;
+  @JsonProperty(value = "text")
   String Text;
   Timestamp timestamp;
 
