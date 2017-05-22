@@ -12,7 +12,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class MessageController {
 
-  public static final String receiveLink = "/api/message/receive";
+  public static final String receiveLink = System.getenv("CHAT_APP_PEER_ADDRESSS") + "/api/message/receive";
+  public static final String myClient = System.getenv("CHAT_APP_UNIQUE_ID");
   RestTemplate restTemplate = new RestTemplate();
   @Autowired
   MessageRepository messRepo;
@@ -23,17 +24,17 @@ public class MessageController {
     return new ErrorMessage("This is an error");
   }
 
-  @CrossOrigin("*")
-  @RequestMapping(path = receiveLink, method = RequestMethod.POST)
+  @RequestMapping(path = "/api/message/receive" , method = RequestMethod.POST)
   public Response getMessageGroot(@RequestBody Reciever newReciever) {
-    Response myResponse;
+    Response myResponse = new Response("f","f");
     if (newReciever.getMessage().getUsername() == null) {
-      myResponse = new Response("Error", "Missing field(s): message.username");
-    } else {
+      myResponse.setMessage("Missing field(s): message.username");
+      myResponse.setStatus("Error");
+      return myResponse;
+    } else if (!newReciever.getClient().getClient().equals(myClient)){
       myResponse = new Response("OK", null);
       messRepo.save(newReciever.getMessage());
-
-//      restTemplate.postForObject(receiveLink, newReciever.getMessage(),Response.class);
+      restTemplate.postForObject(receiveLink, newReciever,Response.class);
     }
     return myResponse;
   }

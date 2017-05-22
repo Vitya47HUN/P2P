@@ -4,7 +4,7 @@ package com.greenfox.model;
 public class Reciever {
 
   private Message message;
-  private User user;
+  private Client client;
 
   public Reciever() {
   }
@@ -17,11 +17,11 @@ public class Reciever {
     this.message = message;
   }
 
-  public User getUser() {
-    return user;
+  public Client getClient() {
+    return client;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setClient(Client client) {
+    this.client = client;
   }
 }

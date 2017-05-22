@@ -1,9 +1,6 @@
 package com.greenfox.controller;
 
-import com.greenfox.model.ErrorMessage;
-import com.greenfox.model.Log;
-import com.greenfox.model.Message;
-import com.greenfox.model.User;
+import com.greenfox.model.*;
 import com.greenfox.repository.ChatRepository;
 import com.greenfox.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +10,13 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class MainController {
+
+  public static final String receiveLink = System.getenv("CHAT_APP_PEER_ADDRESSS") + "/api/message/receive";
+  RestTemplate restTemplate = new RestTemplate();
 
   @Autowired
   ChatRepository chatRepo;
@@ -70,6 +71,11 @@ public class MainController {
     Message newMessage = new Message(chatRepo.findOne((long)1).getName());
     newMessage.setText(message);
     messRepo.save(newMessage);
+    Reciever newReciever = new Reciever();
+    Client client = new Client();
+    newReciever.setClient(client);
+    newReciever.setMessage(newMessage);
+    restTemplate.postForObject(receiveLink,newReciever,Response.class);
     return "redirect:/";
   }
 }
