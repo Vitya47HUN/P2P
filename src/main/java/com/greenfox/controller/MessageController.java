@@ -2,7 +2,8 @@ package com.greenfox.controller;
 
 import com.greenfox.model.ErrorMessage;
 import com.greenfox.model.Reciever;
-import com.greenfox.model.Response;
+import com.greenfox.model.ResponseNotOk;
+import com.greenfox.model.ResponseOk;
 import com.greenfox.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -14,7 +15,10 @@ public class MessageController {
 
   public static final String receiveLink = System.getenv("CHAT_APP_PEER_ADDRESSS") + "/api/message/receive";
   public static final String myClient = System.getenv("CHAT_APP_UNIQUE_ID");
+  ResponseNotOk responseNot = new ResponseNotOk();
+  ResponseOk responseOk = new ResponseOk();
   RestTemplate restTemplate = new RestTemplate();
+
   @Autowired
   MessageRepository messRepo;
 
@@ -25,17 +29,13 @@ public class MessageController {
   }
 
   @RequestMapping(path = "/api/message/receive" , method = RequestMethod.POST)
-  public Response getMessageGroot(@RequestBody Reciever newReciever) {
-    Response myResponse = new Response("f","f");
+  public Object getMessageGroot(@RequestBody Reciever newReciever) {
     if (newReciever.getMessage().getUsername() == null) {
-      myResponse.setMessage("Missing field(s): message.username");
-      myResponse.setStatus("Error");
-      return myResponse;
+      return responseNot;
     } else if (!newReciever.getClient().getId().equals(myClient)){
-      myResponse = new Response("OK", null);
       messRepo.save(newReciever.getMessage());
-      restTemplate.postForObject(receiveLink, newReciever,Response.class);
+      restTemplate.postForObject(receiveLink, newReciever,ResponseOk.class);
     }
-    return myResponse;
+    return responseOk;
   }
 }

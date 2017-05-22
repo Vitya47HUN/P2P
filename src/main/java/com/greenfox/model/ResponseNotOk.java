@@ -1,13 +1,13 @@
 package com.greenfox.model;
 
-public class Response {
+public class ResponseNotOk {
 
   private String status;
   private String message;
 
-  public Response(String status, String message) {
-    this.status = status;
-    this.message = message;
+  public ResponseNotOk() {
+    this.status = "error";
+    this.message = "Missing field(s) message.timestamp, client.id";
   }
 
   public String getStatus() {

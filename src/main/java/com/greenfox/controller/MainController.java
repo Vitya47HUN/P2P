@@ -75,7 +75,7 @@ public class MainController {
     Client client = new Client();
     newReciever.setClient(client);
     newReciever.setMessage(newMessage);
-    restTemplate.postForObject(receiveLink,newReciever,Response.class);
+    restTemplate.postForObject(receiveLink,newReciever,ResponseOk.class);
     return "redirect:/";
   }
 }
