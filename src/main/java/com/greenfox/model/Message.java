@@ -41,7 +41,7 @@ public class Message {
   }
 
   public Message(String name){
-    this.timestamp = new Timestamp(System.currentTimeMillis() / 1000);
+    this.timestamp = new Timestamp(System.currentTimeMillis());
     Username = name;
     Random r = new Random();
     id = 1000000+ (long)(r.nextDouble()*(9999999-1000000));
