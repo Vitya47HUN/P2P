@@ -27,7 +27,8 @@ public class MessageController {
     String error = e.getParameterName();
     return new ErrorMessage("This is an error");
   }
-
+  
+  @CrossOrigin("*")
   @RequestMapping(path = "/api/message/receive" , method = RequestMethod.POST)
   public Object getMessageGroot(@RequestBody Reciever newReciever) {
     if (newReciever.getMessage().getUsername() == null) {
