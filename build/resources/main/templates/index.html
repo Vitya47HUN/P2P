@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>P2P chat program</title>
-    <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+  <meta http-equiv="refresh" content="5" charset="UTF-8"/>
+  <title>P2P chat program</title>
+  <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+
 </head>
 <body>
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
@@ -11,41 +12,42 @@
 <h1>Peer to Peer Chat Program</h1>
 <span th:if="${error} == 'The username field is empty.'"><p class="alert alert-danger" th:text="${error}"></p></span>
 <form method="get" action="/update">
-
-
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="input-group">
-      <span class="input-group-btn">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input class="form-control" th:type="text" name="name" th:placeholder="${userName}"/>
+        <span class="input-group-btn">
           <button class="btn btn-primary" th:type="submit">Update</button>
       </span>
-                <input class="form-control" th:type="text" name="name" th:placeholder="${userName}"/>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-    </div><!-- /.row -->
-
-    <!--<tr>-->
-        <!--<th>Your username</th>-->
-    <!--</tr>-->
-    <!--<tr>-->
-        <!--<td><input class="input-group input-group-lg" th:type="text" name="name" th:placeholder="${userName}"/></td>-->
-        <!--<td><input class="form-control" th:type="submit" value="Update"/></td>-->
-    <!--</tr>-->
+      </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
 </form>
 <h3>Messages</h3>
-    <span th:if="${messRepo == 0}">No messages yet.</span>
-    <span th:if="${messRepo > 0}">
+<span th:if="${messRepo == 0}">No messages yet.</span>
+<span th:if="${messRepo > 0}">
         <ul>
-            <li th:each="message : ${messRepoList}" th:utext="${message.username} + '&lt;br/&gt;' + ${message.text} "></li>
+            <li th:each="message : ${messRepoList}"
+                th:utext="${message.username} + '&lt;br/&gt;' + ${message.text} "></li>
         </ul>
     </span>
 <h3>Chat panel</h3>
-    <form action="/message">
-        <tr>
-            <td><input type="list" name="message"/></td>
-            <td><input type="submit" value="Send"/></td>
-        </tr>
-    </form>
+<form action="/message">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input class="form-control" th:type="list" name="message"/>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" th:type="submit">Send</button>
+      </span>
+      </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+  </div><!-- /.row -->
+  <!--<tr>-->
+  <!--<td><input type="list" name="message"/></td>-->
+  <!--<td><input type="submit" value="Send"/></td>-->
+  <!--</tr>-->
+</form>
 <p><a href="/">Refresh</a></p>
 </body>
 </html>
