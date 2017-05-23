@@ -44,7 +44,7 @@ public class Message {
     this.timestamp = new Timestamp(System.currentTimeMillis());
     Username = name;
     Random r = new Random();
-    id = 1000000+ (long)(r.nextDouble()*(9999999-1000000));
+    id = 1000000 + (long)(r.nextDouble()*(9999999-1000000));
   }
 
   public String getUsername() {
