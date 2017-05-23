@@ -9,15 +9,27 @@
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <h1>Peer to Peer Chat Program</h1>
-<p th:text="${error}"></p>
+<span th:if="${error} == 'The username field is empty.'"><p class="alert alert-danger" th:text="${error}"></p></span>
 <form method="get" action="/update">
-    <tr>
-        <th>Your username</th>
-    </tr>
-    <tr>
-        <td><input th:type="text" name="name" th:placeholder="${userName}"/></td>
-        <td><input th:type="submit" value="Update"/></td>
-    </tr>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input class="form-control" th:type="text" name="name" th:placeholder="${userName}"/>
+      <span class="input-group-btn">
+          <button class="btn btn-primary" th:type="submit">Update</button>
+      </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+    <!--<tr>-->
+        <!--<th>Your username</th>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td><input class="input-group input-group-lg" th:type="text" name="name" th:placeholder="${userName}"/></td>-->
+        <!--<td><input class="form-control" th:type="submit" value="Update"/></td>-->
+    <!--</tr>-->
 </form>
 <h3>Messages</h3>
     <span th:if="${messRepo == 0}">No messages yet.</span>
@@ -28,10 +40,15 @@
     </span>
 <h3>Chat panel</h3>
     <form action="/message">
-        <tr>
-            <td><input type="list" name="message"/></td>
-            <td><input type="submit" value="Send"/></td>
-        </tr>
+        
+
+
+
+
+        <!--<tr>-->
+            <!--<td><input type="list" name="message"/></td>-->
+            <!--<td><input type="submit" value="Send"/></td>-->
+        <!--</tr>-->
     </form>
 <p><a href="/">Refresh</a></p>
 </body>

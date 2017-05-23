@@ -23,7 +23,7 @@ public class MainController {
 
   @Autowired
   MessageRepository messRepo;
-  String error;
+  String error = "";
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
   public ErrorMessage someException(MissingServletRequestParameterException e) {
