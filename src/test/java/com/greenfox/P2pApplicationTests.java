@@ -25,6 +25,7 @@ public class P2pApplicationTests {
   private MessageRepository repository;
 
   @SuppressWarnings("SpringJavaAutowiringInspection")
+
   @Autowired
   private ObjectMapper mapper;
 
