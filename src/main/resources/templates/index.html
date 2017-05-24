@@ -26,8 +26,8 @@
 <h3>Messages</h3>
 <span th:if="${messRepo == 0}">No messages yet.</span>
 <span th:if="${messRepo > 0}">
-        <ul class="list-group">
-            <li class="list-group-item" th:each="message : ${messRepoList}"
+        <ul>
+            <li th:each="message : ${messRepoList}"
                 th:utext="${message.username} + '&lt;br/&gt;' + ${message.text} "></li>
         </ul>
     </span>
