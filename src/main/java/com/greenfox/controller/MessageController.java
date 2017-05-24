@@ -30,7 +30,7 @@ public class MessageController {
 
   @CrossOrigin("*")
   @RequestMapping(path = "/api/message/receive" , method = RequestMethod.POST)
-  public Object getMessageGroot(@RequestBody Reciever newReciever) {
+  public Object getMessage(@RequestBody Reciever newReciever) {
     if (newReciever.getMessage().getUsername() == null) {
       return responseNot;
     } else if (!newReciever.getClient().getId().equals(myClient)){
