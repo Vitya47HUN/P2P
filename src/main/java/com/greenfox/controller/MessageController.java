@@ -10,6 +10,9 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class MessageController {
 
@@ -31,7 +34,17 @@ public class MessageController {
   @CrossOrigin("*")
   @RequestMapping(path = "/api/message/receive" , method = RequestMethod.POST)
   public Object getMessage(@RequestBody Reciever newReciever) {
+    List<String> errorList = new ArrayList<>();
     if (newReciever.getMessage().getUsername() == null) {
+      errorList.add("message.username");
+    }if(newReciever.getMessage().getText() == null) {
+      errorList.add("message.text");
+    }if(newReciever.getMessage().getTimestamp() == null) {
+      errorList.add("message.timestamp");
+    }if(newReciever.getMessage().getId() == 0) {
+      errorList.add("message.id");
+    }if(newReciever.getClient().getId() == null){
+      errorList.add("client.id");
       return responseNot;
     } else if (!newReciever.getClient().getId().equals(myClient)){
       messRepo.save(newReciever.getMessage());

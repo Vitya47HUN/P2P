@@ -7,7 +7,7 @@ public class ResponseNotOk {
 
   public ResponseNotOk() {
     this.status = "error";
-    this.message = "Missing field(s) message.timestamp, client.id";
+    this.message = "Missing field(s)";
   }
 
   public String getStatus() {
