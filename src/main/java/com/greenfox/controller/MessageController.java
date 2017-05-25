@@ -43,8 +43,10 @@ public class MessageController {
       errorList.add("message.timestamp");
     }if(newReciever.getMessage().getId() == 0) {
       errorList.add("message.id");
-    }if(newReciever.getClient().getId() == null){
+    }if(newReciever.getClient().getId() == null) {
       errorList.add("client.id");
+    }if(errorList.size() > 0){
+      responseNot.setMessage(responseNot + errorList.toString());
       return responseNot;
     } else if (!newReciever.getClient().getId().equals(myClient)){
       messRepo.save(newReciever.getMessage());
