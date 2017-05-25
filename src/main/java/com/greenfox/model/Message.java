@@ -1,7 +1,6 @@
 package com.greenfox.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,7 +10,6 @@ import java.util.Random;
 @Entity
 @Table(name = "Messages")
 public class Message {
-
 
   @Id
   long id;
@@ -57,10 +55,6 @@ public class Message {
 
   public Timestamp getTimestamp() {
     return timestamp;
-  }
-
-  public void setTimestamp(Timestamp timestamp) {
-    this.timestamp = timestamp;
   }
 
   public String getText() {

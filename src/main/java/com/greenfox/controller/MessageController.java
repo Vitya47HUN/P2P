@@ -46,6 +46,7 @@ public class MessageController {
     }if(newReciever.getClient().getId() == null) {
       errorList.add("client.id");
     }if(errorList.size() > 0){
+      System.out.println(errorList.toString());
       responseNot.setMessage(responseNot + errorList.toString());
       return responseNot;
     } else if (!newReciever.getClient().getId().equals(myClient)){
